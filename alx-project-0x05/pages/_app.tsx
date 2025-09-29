@@ -1,11 +1,15 @@
-import { AppProps } from "next/app";
-import { CountProvider } from "@/context/CountContext";
-import "../styles/globals.css";
+// pages/_app.tsx
+import "@/styles/globals.css";  // import global CSS
+import type { AppProps } from "next/app";
+import { CountProvider } from "@/context/CountContext"; // context for state
+import Layout from "@/components/layouts/Layout"; // your layout wrapper
 
-export default function MyApp({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps }: AppProps) {
   return (
     <CountProvider>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </CountProvider>
   );
 }
